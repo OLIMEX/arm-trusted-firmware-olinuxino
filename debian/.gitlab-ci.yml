@@ -1,0 +1,49 @@
+default:
+  image: olimex/u-boot-olinuxino
+
+variables:
+  ATF_RELEASE: 'v2.2'
+
+stages:
+  - source
+  - binary
+  - merge
+  - deploy
+
+package:source:
+  before_script:
+    - rm -vf ../arm-trusted-firmware-olinuxino_* || true
+    - ls -l ../
+    - git checkout -B "$CI_BUILD_REF_NAME" "$CI_BUILD_REF"
+    - git fetch origin +refs/tags/$ATF_RELEASE:refs/tags/$ATF_RELEASE
+    - gbp export-orig --upstream-tree=$ATF_RELEASE
+  script:
+    - dpkg-buildpackage --post-clean -S -i -I
+  stage: source
+
+package:binary:
+  before_script:
+    - dpkg --add-architecture arm64
+    - git checkout -B "$CI_BUILD_REF_NAME" "$CI_BUILD_REF"
+    - git fetch origin +refs/tags/$ATF_RELEASE:refs/tags/$ATF_RELEASE
+  script:
+    - dpkg-buildpackage --post-clean --no-sign -aarm64 -i -I -b
+  stage: binary
+
+package:merge:
+  artifacts:
+    name: "$CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA"
+    paths:
+      - $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/*
+  script:
+    - mkdir $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA && mv -v ../arm-trusted-firmware-olinuxino_*.* $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/
+    - mergechanges -f $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/*.changes
+  stage: merge
+
+deploy:staging:
+  script:
+    - reprepro -b /var/www/html/staging include unstable $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/*_multi.changes
+  stage: deploy
+  tags:
+    - deploy
+  when: manual
