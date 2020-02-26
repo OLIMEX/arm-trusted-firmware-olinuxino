@@ -1,0 +1,5 @@
+arm-trusted-firmware-olinuxino (2.2-1) unstable; urgency=medium
+
+  * Initial packaging
+
+ -- Olimex Dev team <support@olimex.com>  Wed, 26 Jan 2020 09:40:14 -0300

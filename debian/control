@@ -1,0 +1,21 @@
+Source: arm-trusted-firmware-olinuxino
+Section: admin
+Priority: optional
+Maintainer: Olimex Dev team <support@olimex.com>
+Standards-Version: 4.4.1
+Build-Depends: debhelper-compat (= 12)
+Rules-Requires-Root: no
+Homepage: https://www.trustedfirmware.org/
+Vcs-Browser: https://gilab.olimex.com/olimex/arm-trusted-firmware-olinuxino
+Vcs-Git: https://gilab.olimex.com/olimex/arm-trusted-firmware-olinuxino -b master
+
+Package: arm-trusted-firmware-olinuxino
+Architecture: arm64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: "secure world" software for ARM SoCs
+ The "secure world" on arm64 machines is a special level of CPU
+ privilege that is hidden from the normal OS, and has complete
+ control over the system.  It provides both initialization during
+ early boot stages (before u-boot or EFI) and system monitor
+ functionality once the machine is booted up.  This is an equivalent
+ of Intel ME on x86.

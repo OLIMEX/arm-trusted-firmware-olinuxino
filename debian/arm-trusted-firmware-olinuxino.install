@@ -1,0 +1,8 @@
+#!/bin/sh
+
+grep -v '^#' debian/targets | while read plat targets ; do
+	for target in $targets ; do
+		chmod a-x build/$plat/debug/$target
+		echo build/$plat/debug/$target usr/lib/arm-trusted-firmware-olinuxino/$plat/
+	done
+done

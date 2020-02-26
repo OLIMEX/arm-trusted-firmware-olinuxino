@@ -1,0 +1,4 @@
+# docs/chang-log.rst is copied to docs/changelog in debian/rules
+# override_dh_installdocs target.
+docs/changelog
+readme.rst

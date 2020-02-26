@@ -1,0 +1,301 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: arm-trusted-firmware
+Source: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/
+
+Files: *
+Copyright:
+ 2013-2019, Arm Limited and Contributors.
+License: BSD-3-clause
+
+Files: debian/*
+Copyright: 2018 Adam Borowski <kilobyte@angband.pl>
+ 2018 Vagrant Cascadian <vagrant@debian.org>
+License: BSD-3-clause
+
+Files: drivers/imx/uart/*
+Copyright:
+  Linaro 2018 Limited and Contributors.
+License: BSD-3-clause
+
+Files: drivers/marvell/*
+Copyright:
+ 2016-2018 Marvell International Ltd.
+License: BSD-3-clause
+
+Files: drivers/renesas/*
+Copyright:
+ 2015-2019, Renesas Electronics Corporation.
+License: BSD-3-clause
+
+Files:
+ drivers/st/*
+Copyright:
+ 2016-2019, STMicroelectronics
+ 2018, ARM Limited and Contributors.
+License: BSD-3-clause
+
+Files:
+ drivers/st/clk/stm32mp1_clk.c
+ drivers/st/ddr/stm32mp1_ddr.c
+ drivers/st/ddr/stm32mp1_ram.c
+Copyright: 2018-2019, STMicroelectronics
+License: GPL-2+ or BSD-3-clause
+
+Files:
+ drivers/staging/renesas/*
+Copyright:
+ 2015-2019, Renesas Electronics Corporation. All rights reserved.
+License: BSD-3-Clause
+
+Files: fdts/stm32*
+Copyright:
+ 2017-2019, STMicroelectronics
+ 2019, Arrow Electronics
+ 2019, Linaro Ltd
+License: GPL-2+ or BSD-3-clause
+
+Files: include/dt-bindings/*
+Copyright:
+ 2017-2018, STMicroelectronics
+License: GPL-2+ or BSD-3-clause
+
+Files: include/drivers/marvell/*
+Copyright:
+  2017-2018 Marvell International Ltd.
+License: BSD-3-clause
+
+Files: include/drivers/mentor/mi2cv.h
+Copyright:
+ 2018 Marvell International Ltd.
+ 2018 Icenowy Zheng <icenowy@aosc.io>
+License: BSD-3-Clause
+
+Files: include/drivers/st/*
+Copyright:
+ 2015-2018, ARM Limited and Contributors
+ 2015-2018, STMicroelectronics
+License: BSD-3-clause
+
+Files:
+ include/drivers/st/stm32mp1_ddr.h
+ include/drivers/st/stm32mp1_ddr_regs.h
+Copyright:
+ 2017-2019, STMicroelectronics
+License: GPL-2+ or BSD-3-clause
+
+Files:
+ lib/libc/strcmp.c
+ lib/libc/strchr.c
+ lib/libc/strncmp.c
+ lib/libc/strrchr.c
+Copyright:
+ 1988-1993 The Regents of the University of California.
+License: BSD-3-clause
+
+Files: lib/libc/strlcpy.c
+Copyright:
+ 1998, 2015 Todd C. Miller <Todd.Miller@courtesan.com>
+License: ISC
+
+Files: lib/libc/strnlen.c
+Copyright:
+ 2009 David Schultz <das@FreeBSD.org>
+License: BSD-2-clause
+
+Files: lib/zlib/*
+Copyright:
+ 1995-2017 Mark Adler
+ 1995-2017 Jean-loup Gailly
+License: Zlib
+
+Files: lib/zlib/tf_gunzip.c
+ lib/zlib/zlib.mk
+Copyright:
+ 2018, ARM Limited and Contributors.
+License: BSD-3-clause
+
+Files: plat/allwinner/*
+Copyright:
+ 2017-2019, ARM Limited and Contributors.
+ 2018, Andre Przywara <osp@andrep.de>
+ 2018, Icenowy Zheng <icenowy@aosc.io>
+License: BSD-3-clause
+
+Files: plat/marvell/*
+ include/plat/marvell/*
+Copyright:
+ 2016-2018 Marvell International Ltd.
+ 2016-2018, ARM Limited and Contributors.
+ 2019 Repk repk@triplefau.lt
+License: BSD-3-clause
+
+Files: plat/ti/*
+Copyright:
+ 2018 Texas Instruments Incorporated
+ 2017-2018, ARM Limited and Contributors.
+License: BSD-3-clause
+
+Files: plat/renesas/*
+Copyright:
+ 2013-2018, ARM Limited and Contributors.
+ 2015-2019, Renesas Electronics Corporation.
+License: BSD-3-clause
+
+Files: plat/st/*
+Copyright:
+ 2015-2019, ARM Limited and Contributors.
+ 2017-2019, STMicroelectronics
+License: BSD-3-clause
+
+Files: plat/imx/imx7/common/imx7_helpers.S
+Copyright:
+  Linaro 2018-2019 Limited and Contributors.
+License: BSD-3-clause
+
+Files: services/spd/opteed/teesmc_opteed.h
+Copyright:
+ 2014, ARM Limited and Contributors.
+ 2014, Linaro Limited.
+License: BSD-3-clause
+
+Files: tools/marvell/*
+Copyright:
+ 2018 Marvell International Ltd.
+License: BSD-3-clause
+
+Files: tools/renesas/*
+Copyright:
+ 2015-2018, Renesas Electronics Corporation.
+License: BSD-3-clause
+
+Files: tools/stm32image/*
+Copyright:
+ 2017-2018, ARM Limited and Contributors.
+ 2017-2018, STMicroelectronics
+License: BSD-3-clause
+
+Files:
+ lib/libfdt/*
+ include/lib/libfdt/*
+Copyright:
+ 2006-2012 David Gibson, IBM Corporation.
+ 2012 Kim Phillips, Freescale Semiconductor.
+ 2014 David Gibson <david@gibson.dropbear.id.au>
+ 2016 Free Electrons
+ 2016 NextThing Co.
+License: BSD-2-clause or GPL-2+
+
+Files: lib/libfdt/libfdt.mk
+Copyright: 2016, ARM Limited and Contributors.
+License: BSD-3-clause
+
+Files: include/lib/libc/*
+Copyright:
+ 1982-1993 The Regents of the University of California.
+ UNIX System Laboratories, Inc.
+ 2001 David E. O'Brien
+ 2012-2017 Roberto E. Vargas Caballero
+ 2018-2019, ARM Limited and Contributors.
+License: BSD-3-clause
+
+Files: include/lib/libc/endian.h
+Copyright: 2002 Thomas Moestl <tmm@FreeBSD.org>
+License: BSD-2-clause
+
+Files:
+ include/tools_share/uuid.h
+Copyright:
+ 2002 Marcel Moolenaar
+License: BSD-2-clause
+
+License: BSD-3-clause
+ Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+ .
+ -  Redistributions of source code must retain the above copyright notice, this
+    list of conditions and the following disclaimer.
+ .
+ -  Redistributions in binary form must reproduce the above copyright notice, this
+    list of conditions and the following disclaimer in the documentation and/or
+    other materials provided with the distribution.
+ .
+ -  Neither the name of Arm nor the names of its contributors may be used to
+    endorse or promote products derived from this software without specific prior
+    written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: BSD-2-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: GPL-2+
+ This library is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or (at
+ your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+ .
+ On Debian systems, the full text of the GNU General Public License
+ version 2 can be found in the file `/usr/share/common-licenses/GPL-2'.
+
+License: ISC
+ * Permission to use, copy, modify, and distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+License: Zlib
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
+  .
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+  .
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.

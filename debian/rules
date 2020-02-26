@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+export DH_VERBOSE=1
+export DEB_BUILD_MAINT_OPTIONS=hardening=-relro,-stackprotector
+export DEB_LDFLAGS_MAINT_SET =
+export TF_CFLAGS += -fno-pie
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	# Always set CROSS_COMPILE, which also works for native builds.
+	grep -v '^#' debian/targets | while read plat targets ; do \
+		CROSS_COMPILE=aarch64-linux-gnu- make --debug=v DEBUG=1 PLAT=$$plat bl31 ; \
+	done
+
+override_dh_installdocs:
+	# Rename changelog to comply with debian policy.
+	cp docs/change-log.rst docs/changelog
+	dh_installdocs
+	rm docs/changelog
