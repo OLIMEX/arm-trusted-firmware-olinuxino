@@ -70,7 +70,6 @@ deploy:staging:
   stage: deploy
   tags:
     - deploy
-  when: manual
 
 deploy:release:
   script:
