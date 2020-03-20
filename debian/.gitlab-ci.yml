@@ -11,23 +11,44 @@ stages:
   - deploy
 
 package:source:
+  artifacts:
+    name: "$CI_PROJECT_NAME-source.$CI_COMMIT_SHORT_SHA"
+    paths:
+      - $CI_PROJECT_NAME-source.$CI_COMMIT_SHORT_SHA/*
+    when: on_success
   before_script:
     - rm -vf ../arm-trusted-firmware-olinuxino_* || true
     - ls -l ../
     - git checkout -B "$CI_BUILD_REF_NAME" "$CI_BUILD_REF"
     - git fetch origin +refs/tags/$ATF_RELEASE:refs/tags/$ATF_RELEASE
+    - sed -i "s/BUILD_DATE/$(date +%Y%m%d.%H%M%S)/g" debian/changelog
     - gbp export-orig --upstream-tree=$ATF_RELEASE
   script:
     - dpkg-buildpackage --post-clean -S -i -I
+    - mkdir $CI_PROJECT_NAME-source.$CI_COMMIT_SHORT_SHA
+    - mv -vf ../arm-trusted-firmware-olinuxino_*.* $CI_PROJECT_NAME-source.$CI_COMMIT_SHORT_SHA/
+    - cp -v debian/changelog $CI_PROJECT_NAME-source.$CI_COMMIT_SHORT_SHA/
   stage: source
 
 package:binary:
+  artifacts:
+    name: "$CI_PROJECT_NAME-binary.$CI_COMMIT_SHORT_SHA"
+    paths:
+      - $CI_PROJECT_NAME-binary.$CI_COMMIT_SHORT_SHA/*
+    when: on_success
   before_script:
+    - rm -vf ../arm-trusted-firmware-olinuxino_* || true
     - dpkg --add-architecture arm64
-    - git checkout -B "$CI_BUILD_REF_NAME" "$CI_BUILD_REF"
-    - git fetch origin +refs/tags/$ATF_RELEASE:refs/tags/$ATF_RELEASE
+    - cp -v $CI_PROJECT_NAME-source.$CI_COMMIT_SHORT_SHA/arm-trusted-firmware-olinuxino_*.orig.tar.gz ../
+    - cp -v $CI_PROJECT_NAME-source.$CI_COMMIT_SHORT_SHA/changelog debian/changelog
+    - rm -rvf $CI_PROJECT_NAME-source.$CI_COMMIT_SHORT_SHA
+  needs:
+    - "package:source"
   script:
     - dpkg-buildpackage --post-clean --no-sign -aarm64 -i -I -b
+    - mkdir $CI_PROJECT_NAME-binary.$CI_COMMIT_SHORT_SHA
+    - rm -vf ../arm-trusted-firmware-olinuxino_*.orig.tar.gz
+    - mv -vf ../arm-trusted-firmware-olinuxino_*.* $CI_PROJECT_NAME-binary.$CI_COMMIT_SHORT_SHA/
   stage: binary
 
 package:merge:
@@ -36,13 +57,26 @@ package:merge:
     paths:
       - $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/*
   script:
-    - mkdir $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA && mv -v ../arm-trusted-firmware-olinuxino_*.* $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/
+    - mkdir $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA
+    - cp -vf $CI_PROJECT_NAME-*.$CI_COMMIT_SHORT_SHA/* $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/
     - mergechanges -f $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/*.changes
   stage: merge
 
 deploy:staging:
   script:
-    - reprepro -b /var/www/html/staging include unstable $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/*_multi.changes
+    - reprepro -b /var/www/html/staging --ignore=wrongdistribution include buster $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/*_multi.changes
+    - reprepro -b /var/www/html/staging --ignore=wrongdistribution include bionic $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/*_multi.changes
+    - reprepro -b /var/www/html/staging --ignore=wrongdistribution include sid $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/*_multi.changes
+  stage: deploy
+  tags:
+    - deploy
+  when: manual
+
+deploy:release:
+  script:
+    - reprepro -b /var/www/html/repository --ignore=wrongdistribution include buster $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/*_multi.changes
+    - reprepro -b /var/www/html/repository --ignore=wrongdistribution include bionic $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/*_multi.changes
+    - reprepro -b /var/www/html/repository --ignore=wrongdistribution include sid $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA/*_multi.changes
   stage: deploy
   tags:
     - deploy

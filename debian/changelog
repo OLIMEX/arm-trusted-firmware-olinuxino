@@ -1,11 +1,5 @@
-arm-trusted-firmware-olinuxino (2.2-2) unstable; urgency=medium
+arm-trusted-firmware-olinuxino (2.2-BUILD_DATE) unstable; urgency=medium
 
-  * Enable DLDO4
+  * initial import
 
- -- Olimex Dev team <support@olimex.com>  Wed, 26 Feb 2020 11:24:47 +0200
-
-arm-trusted-firmware-olinuxino (2.2-1) unstable; urgency=medium
-
-  * Initial packaging
-
- -- Olimex Dev team <support@olimex.com>  Wed, 26 Jan 2020 09:40:14 +0200
+ -- Olimex Dev team <support@olimex.com>  Fri, 20 Mar 2020 21:42:23 +0200
