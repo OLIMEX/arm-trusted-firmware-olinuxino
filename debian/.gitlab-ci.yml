@@ -79,4 +79,3 @@ deploy:release:
   stage: deploy
   tags:
     - deploy
-  when: manual
